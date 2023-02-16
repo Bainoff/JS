@@ -55,7 +55,8 @@ function func6webElemTest(element) {
                                         "\n   2. Conditions for being active/unactive" +
                                         "\n   3. Clicking action animation";
 
-    if (element != "phoneNumberField" && element != "checkbox" && element != "signInButton") return "Enter correct element";
+    if (element != "phoneNumberField" && element != "checkbox" && element != "signInButton")
+    return "Enter correct element";
 }
 
 function func7json2xml (script) {
