@@ -5,72 +5,87 @@
 Familiar with basics of JS, that makes me able to dig the code and find the very basic reasons of detected bugs. In other words - to use white (glass) box testing.
 
 ```java script        
-function f1(p1,p2){
-    let a1 = p1
-    let a2 = p2
-    result_text = "hello, "+p1+" "+p2
-    console.log(result_text)
-    return result_text
+function func1sum(x,y) {
+    z = x + y;
+return z;
 }
 
-f1("Dude", 10)
-
-let func1 = f1("Man", 100)
-let func2 = f1(100, 10)
-console.log(func1)
-console.log(func2)
-
-function f2(name, message){
-    message = message || "welcome,"
-    return message + ' ' + name 
+function func2sqr(x) {
+    z = x * x;
+    return z;
 }
-console.log(f2("aliens!"))
 
-function f3(name, message = "welcome"){
-    return message + ' ' + name 
-}
-console.log(f3("Bond", "James"))
+function func3json(surname, name, middlename) {
+    return  "{name : " + name +
+            "\n surname : " + surname +
+            "\n middlename : " + middlename + "}"}
 
-function f4(p1,p2){
-    if (p1 > p2) {
-        return p1 - p2
-    } else if (p1 < p2) {
-        return p1 + p2
-    } else {
-        return "P1 == P2"
+function func4even() {
+    const digs = [];
+    let i = 0;
+    for (const n of arguments) {
+        if (n%2 == 0) {
+            digs[i] = n;
+            i++;}
     }
-    }
-console.log(f4(4,4))
-
-// arrow functions
-
-let fs11 = () => console.log("OK!")
-fs11()
-
-let fs22 = (p1,p2) => console.log("OK!",p1,p2)
-fs22(30,40)
-
-let n1 = 100
-let n2 = 200
-
-let fs33 = (n1 > n2) ?
-    (p1,p2) => console.log("1_OK!",p1-p2) :
-    (p1,p2) => console.log("2_OK!", p1+p2);
-
-fs33(n1,n2)
-
-// nested functions
-
-function n3(title, fn1){
-    console.log(title, "N2")
-    fn1("code 200 OK!!!!")
+    if (digs.length == 0) return "No even numbers";
+    else return digs;
 }
 
-n3("Test code 200", function(pp1){
-    console.log("Test run!")
-    console.log(pp1)
-})
+function func5Acounter(word) {
+    let counter = 0;
+    for (i = 0; i < word.length; i++) {
+        if (word.charAt(i) == 'a') {counter++;}
+    }
+    if (counter == 0) {return "No A characters"}
+return counter + " a characters in given word";
+}
 
+function func6webElemTest(element) {
+    if (element == "phoneNumberField") return "   1. Fitting pattern" + 
+                                            "\n   2. Contains digits only" +
+                                            "\n   3. Contains predefined delimeters only";
+                                            
+    if (element == "checkbox") return "           1. Can be checked/unchecked" + 
+                                            "\n   2. Conditions for being active/unactive" +
+                                            "\n   3. Clickable some pixels around it" +
+                                            "\n   4. It's default state";
+
+    if (element == "signInButton") return "   1. Fitting design pattern" + 
+                                        "\n   2. Conditions for being active/unactive" +
+                                        "\n   3. Clicking action animation";
+
+    if (element != "phoneNumberField" && element != "checkbox" && element != "signInButton") return "Enter correct element";
+}
+
+function func7json2xml (script) {
+    var xml = '';
+    for (var prop in script) {
+      xml += script[prop] instanceof Array ? '' : "<" + prop + ">";
+      if (script[prop] instanceof Array) {
+        for (var array in script[prop]) {
+          xml += "<" + prop + ">";
+          xml += func7json2xml(new Object(script[prop][array]));
+          xml += "</" + prop + ">";
+        }
+      } else if (typeof script[prop] == "object") {
+        xml += func7json2xml(new Object(script[prop]));
+      } else {
+        xml += script[prop];
+      }
+      xml += script[prop] instanceof Array ? '' : "</" + prop + ">";
+    }
+    var xml = xml.replace(/<\/?[0-9]{1,}>/g, '');
+    return xml
+  }
+
+console.log(func1sum(2,3));
+console.log(func2sqr(3));
+console.log(func3json("ivanov", "ivan", "ivanovich"));
+console.log(func4even(1,2,3,4,5,5,5,5,6,7,8));
+console.log(func5Acounter("abrakadabra"));
+console.log(func6webElemTest("signInButton"));
+console.log(func7json2xml({"type": "module", "name": "John", "age": 30}));
 ```
 My scope of **Java Script** knowleadge is capable enough both for writing not complicated programs and automating testin process, using Postman or Selenium. 
 ## Java Script
